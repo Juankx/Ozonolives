@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://ozonolives.com/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
