@@ -4,99 +4,162 @@ import ProductCard from '../components/ProductCard'
 const Productos = () => {
   const [selectedCategory, setSelectedCategory] = useState('todos')
 
-  // Datos de productos por categoría actualizados
+  // Datos de productos por categoría actualizados según especificaciones
   const products = {
-    osmosis: [
+    sistemasOzono: [
       {
-        id: 'p-001',
-        name: 'Sistema de Ósmosis Inversa Residencial',
-        description: 'Sistema completo de ósmosis inversa para hogares, elimina hasta 99% de contaminantes.',
-        category: 'osmosis',
-        price: '$599.99',
-        features: ['Capacidad: 75 GPD', '5 etapas de filtración', 'Tanque de almacenamiento incluido'],
-        isPopular: true
+        id: 'oz-001',
+        name: 'OZONO PET',
+        description: 'Sistema de purificación por ozono para botellas PET, ideal para purificación de agua en botellas reutilizables.',
+        category: 'sistemasOzono',
+        image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+        features: ['Producción: 3g/h de ozono', 'Capacidad: 500ml por ciclo', 'Tiempo de purificación: 5-10 min'],
+        specifications: {
+          'Potencia': '50W',
+          'Voltaje': '220V AC',
+          'Dimensiones': '15 x 10 x 8 cm',
+          'Material': 'Plástico ABS resistente'
+        }
       },
       {
-        id: 'p-002',
-        name: 'Sistema de Ósmosis Inversa Industrial',
-        description: 'Sistema de alta capacidad para aplicaciones comerciales e industriales.',
-        category: 'osmosis',
-        price: '$2,999.99',
-        features: ['Capacidad: 500 GPD', 'Filtración automática', 'Monitoreo digital'],
-        isNew: true
+        id: 'oz-002',
+        name: 'DIAMANT INOX',
+        description: 'Sistema de ozonización industrial de alta capacidad con carcasa de acero inoxidable.',
+        category: 'sistemasOzono',
+        image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=300&fit=crop',
+        features: ['Producción: 10g/h de ozono', 'Capacidad: 10,000 litros/hora', 'Control digital avanzado'],
+        specifications: {
+          'Potencia': '200W',
+          'Voltaje': '220V/380V AC',
+          'Dimensiones': '40 x 30 x 25 cm',
+          'Material': 'Acero inoxidable 316L'
+        }
       },
       {
-        id: 'p-003',
-        name: 'Sistema de Ósmosis Inversa Compacto',
-        description: 'Sistema de bajo perfil ideal para espacios reducidos y cocinas pequeñas.',
-        category: 'osmosis',
-        price: '$399.99',
-        features: ['Capacidad: 50 GPD', 'Diseño compacto', 'Instalación fácil']
+        id: 'oz-003',
+        name: 'GTOR',
+        description: 'Generador de ozono de alta eficiencia para aplicaciones comerciales y residenciales.',
+        category: 'sistemasOzono',
+        image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+        features: ['Producción: 5g/h de ozono', 'Capacidad: 2,000 litros/hora', 'Timer programable'],
+        specifications: {
+          'Potencia': '100W',
+          'Voltaje': '220V AC',
+          'Dimensiones': '25 x 20 x 15 cm',
+          'Material': 'Plástico ABS + acero inoxidable'
+        }
+      },
+      {
+        id: 'oz-004',
+        name: 'CABEZOTE INOX',
+        description: 'Cabezal de distribución de ozono en acero inoxidable para sistemas industriales.',
+        category: 'sistemasOzono',
+        image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=300&fit=crop',
+        features: ['Distribución uniforme', 'Resistente a corrosión', 'Conexiones estándar'],
+        specifications: {
+          'Material': 'Acero inoxidable 304',
+          'Presión': 'Hasta 10 bar',
+          'Temperatura': '-10°C a +80°C',
+          'Conexiones': '1" NPT hembra'
+        }
       }
     ],
-    ozono: [
+    sistemasOsmosis: [
       {
-        id: 'p-004',
-        name: 'Sistema de Purificación por Ozono',
-        description: 'Sistema de ozonización para purificación completa del agua sin químicos.',
-        category: 'ozono',
-        price: '$899.99',
-        features: ['Producción: 5g/h', 'Control automático', 'Elimina bacterias y virus'],
-        isPopular: true
+        id: 'os-001',
+        name: 'Ósmosis Inversa 5 Etapas',
+        description: 'Sistema de ósmosis inversa residencial de 5 etapas para purificación completa del agua.',
+        category: 'sistemasOsmosis',
+        image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+        features: ['5 etapas de filtración', 'Capacidad: 75 GPD', 'Tanque de almacenamiento incluido'],
+        specifications: {
+          'Capacidad': '75 GPD (283 L/día)',
+          'Presión': '2.8 - 6.2 bar',
+          'Temperatura': '4°C - 38°C',
+          'TDS máximo': '2000 ppm'
+        }
       },
       {
-        id: 'p-005',
-        name: 'Sistema de Ozono para Piscinas',
-        description: 'Sistema de ozonización para piscinas residenciales y comerciales.',
-        category: 'ozono',
-        price: '$1,299.99',
-        features: ['Capacidad: 50,000 litros', 'Ahorro en químicos', 'Agua cristalina'],
-        isNew: true
-      },
-      {
-        id: 'p-006',
-        name: 'Sistema de Ozono para Agricultura',
-        description: 'Sistema de ozonización para riego agrícola y cultivos hidropónicos.',
-        category: 'ozono',
-        price: '$799.99',
-        features: ['Producción: 3g/h', 'Control de pH', 'Mejora crecimiento de plantas']
+        id: 'os-002',
+        name: 'Ósmosis Inversa 7 Etapas + Lámpara UV',
+        description: 'Sistema avanzado de ósmosis inversa con 7 etapas y desinfección ultravioleta.',
+        category: 'sistemasOsmosis',
+        image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=300&fit=crop',
+        features: ['7 etapas de filtración', 'Lámpara UV germicida', 'Capacidad: 100 GPD', 'Control digital'],
+        specifications: {
+          'Capacidad': '100 GPD (378 L/día)',
+          'Presión': '2.8 - 6.2 bar',
+          'Temperatura': '4°C - 38°C',
+          'Potencia UV': '11W',
+          'TDS máximo': '2000 ppm'
+        }
       }
     ],
-    filtracion: [
+    filtrosPartes: [
       {
-        id: 'p-007',
-        name: 'Sistema de Filtración Multi-Etapa',
-        description: 'Sistema de filtración avanzada para agua potable residencial.',
-        category: 'filtracion',
-        price: '$299.99',
-        features: ['3 etapas de filtración', 'Filtro de sedimentos', 'Filtro de carbón activado'],
-        isPopular: true
+        id: 'fp-001',
+        name: 'Filtro de Sedimentos 5 Micras',
+        description: 'Filtro de sedimentos de alta capacidad para retener partículas suspendidas.',
+        category: 'filtrosPartes',
+        image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+        features: ['Filtración: 5 micras', 'Capacidad: 10,000 litros', 'Conexiones estándar'],
+        specifications: {
+          'Filtración': '5 micras',
+          'Capacidad': '10,000 litros',
+          'Presión': 'Hasta 8 bar',
+          'Temperatura': '0°C a +50°C'
+        }
       },
       {
-        id: 'p-008',
-        name: 'Sistema de Filtración Industrial',
-        description: 'Sistema de filtración de alta capacidad para aplicaciones industriales.',
-        category: 'filtracion',
-        price: '$1,899.99',
-        features: ['Capacidad: 100 GPM', 'Filtros automáticos', 'Monitoreo de presión'],
-        isNew: true
+        id: 'fp-002',
+        name: 'Filtro de Carbón Activado',
+        description: 'Filtro de carbón activado para eliminar cloro, sabores y olores del agua.',
+        category: 'filtrosPartes',
+        image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=300&fit=crop',
+        features: ['Elimina cloro', 'Mejora sabor y olor', 'Capacidad: 8,000 litros'],
+        specifications: {
+          'Filtración': 'Carbón activado',
+          'Capacidad': '8,000 litros',
+          'Presión': 'Hasta 8 bar',
+          'Temperatura': '0°C a +50°C'
+        }
       },
       {
-        id: 'p-009',
-        name: 'Sistema de Filtración para Pozos',
-        description: 'Sistema especializado para purificación de agua de pozos y manantiales.',
-        category: 'filtracion',
-        price: '$499.99',
-        features: ['Filtro de arena', 'Filtro de carbón', 'Elimina hierro y manganeso']
+        id: 'fp-003',
+        name: 'Membrana de Ósmosis Inversa',
+        description: 'Membrana de ósmosis inversa de alta eficiencia para sistemas residenciales.',
+        category: 'filtrosPartes',
+        image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+        features: ['Rechazo: 95-98%', 'Capacidad: 75 GPD', 'Vida útil: 2-3 años'],
+        specifications: {
+          'Capacidad': '75 GPD',
+          'Rechazo': '95-98%',
+          'Presión': '2.8 - 6.2 bar',
+          'Temperatura': '4°C - 38°C'
+        }
+      },
+      {
+        id: 'fp-004',
+        name: 'Filtro Post-Carbón',
+        description: 'Filtro de carbón post-ósmosis para mejorar el sabor final del agua.',
+        category: 'filtrosPartes',
+        image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=300&fit=crop',
+        features: ['Mejora sabor final', 'Capacidad: 6,000 litros', 'Instalación fácil'],
+        specifications: {
+          'Filtración': 'Carbón activado',
+          'Capacidad': '6,000 litros',
+          'Presión': 'Hasta 8 bar',
+          'Temperatura': '0°C a +50°C'
+        }
       }
     ]
   }
 
   const categories = [
     { id: 'todos', name: 'Todos los Productos', count: Object.values(products).flat().length },
-    { id: 'osmosis', name: 'Sistemas de Ósmosis Inversa', count: products.osmosis.length },
-    { id: 'ozono', name: 'Sistemas a base de Ozono', count: products.ozono.length },
-    { id: 'filtracion', name: 'Filtración', count: products.filtracion.length }
+    { id: 'sistemasOzono', name: 'Sistemas a base de Ozono', count: products.sistemasOzono.length },
+    { id: 'sistemasOsmosis', name: 'Sistemas de Ósmosis Inversa', count: products.sistemasOsmosis.length },
+    { id: 'filtrosPartes', name: 'Filtros y Partes', count: products.filtrosPartes.length }
   ]
 
   const getFilteredProducts = () => {
@@ -161,8 +224,9 @@ const Productos = () => {
                 name={product.name}
                 description={product.description}
                 category={product.category}
-                price={product.price}
+                image={product.image}
                 features={product.features}
+                specifications={product.specifications}
                 isNew={product.isNew}
                 isPopular={product.isPopular}
               />

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 const ProductCard = ({ 
   id, 
@@ -9,13 +8,14 @@ const ProductCard = ({
   category, 
   price = null,
   features = [],
+  specifications = {},
   isNew = false,
   isPopular = false 
 }) => {
-  return (
-    <div className="card group hover:scale-105 transition-transform duration-300">
-      {/* Image Container */}
-      <div className="relative mb-4 overflow-hidden rounded-lg">
+     return (
+     <div className="card group hover:scale-105 transition-transform duration-300 flex flex-col h-full">
+       {/* Image Container */}
+       <div className="relative mb-4 overflow-hidden rounded-lg flex-shrink-0">
         <div className="aspect-square bg-gradient-to-br from-primary-100 to-secondary-100 flex items-center justify-center">
           {image ? (
             <img 
@@ -54,45 +54,62 @@ const ProductCard = ({
         </div>
       </div>
 
-      {/* Content */}
-      <div className="space-y-3">
-        <h3 className="text-xl font-semibold text-gray-900 group-hover:text-primary-600 transition-colors">
-          {name}
-        </h3>
-        
-        <p className="text-gray-600 text-sm leading-relaxed">
-          {description}
-        </p>
+             {/* Content */}
+       <div className="space-y-4 flex-1 flex flex-col">
+         <h3 className="text-xl font-semibold text-gray-900 group-hover:text-primary-600 transition-colors">
+           {name}
+         </h3>
+         
+         <p className="text-gray-600 text-sm leading-relaxed">
+           {description}
+         </p>
 
-        {/* Features */}
-        {features.length > 0 && (
-          <div className="space-y-1">
-            {features.slice(0, 3).map((feature, index) => (
-              <div key={index} className="flex items-center text-sm text-gray-500">
-                <svg className="w-4 h-4 text-secondary-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
-                {feature}
-              </div>
-            ))}
-          </div>
-        )}
+         {/* Features */}
+         {features.length > 0 && (
+           <div className="space-y-2">
+             {features.slice(0, 3).map((feature, index) => (
+               <div key={index} className="flex items-center text-sm text-gray-500">
+                 <svg className="w-4 h-4 text-secondary-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                 </svg>
+                 {feature}
+               </div>
+             ))}
+           </div>
+         )}
 
-        {/* Price */}
-        {price && (
-          <div className="text-2xl font-bold text-primary-600">
-            ${price}
-          </div>
-        )}
+         {/* Specifications */}
+         {Object.keys(specifications).length > 0 && (
+           <div className="border-t pt-4 mt-auto">
+             <h4 className="text-sm font-semibold text-gray-700 mb-3">Especificaciones:</h4>
+             <div className="space-y-2">
+               {Object.entries(specifications).slice(0, 3).map(([key, value], index) => (
+                 <div key={index} className="flex justify-between text-xs text-gray-500">
+                   <span className="font-medium">{key}:</span>
+                   <span>{value}</span>
+                 </div>
+               ))}
+             </div>
+           </div>
+         )}
 
-        {/* Action Button */}
-        <Link 
-          to={`/productos/${id}`} 
-          className="btn-primary w-full text-center group-hover:bg-primary-700 transition-colors"
-        >
-          Ver Más
-        </Link>
-      </div>
+         {/* Price */}
+         {price && (
+           <div className="text-2xl font-bold text-primary-600 mt-auto">
+             ${price}
+           </div>
+         )}
+
+         {/* Action Button */}
+         <a 
+           href={`https://wa.me/593998692215?text=Hola, me interesa el producto: %0A%0A*${name}*%0A%0A${description}%0A%0APor favor, envíenme más información y precios.`}
+           target="_blank"
+           rel="noopener noreferrer"
+           className="btn-primary w-full text-center group-hover:bg-primary-700 transition-colors mt-auto"
+         >
+           Consultar por WhatsApp
+         </a>
+       </div>
     </div>
   )
 }

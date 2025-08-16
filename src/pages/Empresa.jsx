@@ -29,54 +29,7 @@ const Empresa = () => {
     }
   ]
 
-  const team = [
-    {
-      name: "Ing. Carlos Mendoza",
-      position: "Director General",
-      description: "Especialista en sistemas de purificación de agua con más de 15 años de experiencia.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
-    },
-    {
-      name: "Dra. Ana Rodríguez",
-      position: "Directora Técnica",
-      description: "Doctora en Ingeniería Química, experta en tecnologías de ozonización y filtración.",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
-    },
-    {
-      name: "Ing. Luis Torres",
-      position: "Jefe de Operaciones",
-      description: "Especialista en instalación y mantenimiento de sistemas industriales de purificación.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
-    }
-  ]
-
-  const milestones = [
-    {
-      year: "2010",
-      title: "Fundación de Ozonolives",
-      description: "Nacimos con la misión de proporcionar soluciones sostenibles para la purificación del agua."
-    },
-    {
-      year: "2013",
-      title: "Primer Sistema Industrial",
-      description: "Implementamos nuestro primer sistema de ozonización para una empresa manufacturera."
-    },
-    {
-      year: "2016",
-      title: "Expansión Regional",
-      description: "Ampliamos nuestros servicios a toda la región, estableciendo oficinas en 5 ciudades."
-    },
-    {
-      year: "2019",
-      title: "Certificación ISO",
-      description: "Obtuvimos la certificación ISO 9001:2015 por nuestros sistemas de gestión de calidad."
-    },
-    {
-      year: "2023",
-      title: "Innovación en Ósmosis",
-      description: "Lanzamos nuestra nueva línea de sistemas de ósmosis inversa de alta eficiencia."
-    }
-  ]
+  // Secciones de historia y equipo omitidas según observaciones
 
   return (
     <div className="pt-20">

@@ -2,8 +2,10 @@ import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import WhatsAppButton from './components/WhatsAppButton'
 import Home from './pages/Home'
 import Productos from './pages/Productos'
+import ProductoDetalle from './pages/ProductoDetalle'
 import Servicios from './pages/Servicios'
 import Empresa from './pages/Empresa'
 import Repuestos from './pages/Repuestos'
@@ -17,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/productos" element={<Productos />} />
+          <Route path="/producto/:id" element={<ProductoDetalle />} />
           <Route path="/servicios" element={<Servicios />} />
           <Route path="/empresa" element={<Empresa />} />
           <Route path="/repuestos" element={<Repuestos />} />
@@ -24,6 +27,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   )
 }

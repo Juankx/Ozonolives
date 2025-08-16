@@ -88,9 +88,15 @@ const Contacto = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
         </svg>
       ),
-      title: "Teléfono",
-      content: "+1 (555) 123-4567",
-      link: "tel:+15551234567"
+      title: "Teléfonos",
+      content: (
+        <div className="space-y-1">
+          <div>📞 +593 02-2401386</div>
+          <div>📞 +593 99 053 0192</div>
+          <div>📞 +593 99 869 2215</div>
+        </div>
+      ),
+      link: "tel:+5932401386"
     },
     {
       icon: (
@@ -110,7 +116,7 @@ const Contacto = () => {
         </svg>
       ),
       title: "Dirección",
-      content: "Ciudad, Estado, País",
+      content: "📍 De los Guayacanes N53-210 entre Los Pinos y Belladonas, atrás del Hospital de Solca, Quito-Ecuador.",
       link: "#"
     },
     {
@@ -346,61 +352,26 @@ const Contacto = () => {
                 ))}
               </div>
 
-              {/* Map Placeholder */}
-              <div className="bg-gray-100 rounded-2xl h-64 flex items-center justify-center">
-                <div className="text-center text-gray-500">
-                  <svg className="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  <p className="text-sm">Mapa de Ubicación</p>
-                  <p className="text-xs">Integrar con Google Maps</p>
-                </div>
+              {/* Google Maps */}
+              <div className="bg-gray-100 rounded-2xl h-64 overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.785123456789!2d-78.456789!3d-0.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMMKwMDcnMjQuNCJTIDc4wrAyNycwNC40Ilc!5e0!3m2!1ses!2sec!4v1234567890"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Ubicación de Ozonolives en Quito, Ecuador"
+                  className="w-full h-full"
+                ></iframe>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="section-padding bg-gray-50">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Preguntas Frecuentes
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Resolvemos las dudas más comunes sobre nuestros productos y servicios
-            </p>
-          </div>
-          
-          <div className="max-w-3xl mx-auto space-y-6">
-            {[
-              {
-                question: "¿Cuánto tiempo tarda la instalación de un sistema de filtración?",
-                answer: "La instalación típicamente toma entre 2-4 horas para sistemas residenciales y 1-2 días para sistemas industriales, dependiendo de la complejidad."
-              },
-              {
-                question: "¿Ofrecen garantía en sus productos?",
-                answer: "Sí, todos nuestros productos incluyen garantía de fábrica que varía según el modelo, desde 1 año hasta 5 años para sistemas industriales."
-              },
-              {
-                question: "¿Realizan mantenimiento preventivo?",
-                answer: "Sí, ofrecemos programas de mantenimiento preventivo personalizados que incluyen inspecciones regulares, limpieza y reemplazo de filtros."
-              }
-            ].map((faq, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  {faq.question}
-                </h3>
-                <p className="text-gray-600">
-                  {faq.answer}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* FAQ Section omitida según observaciones */}
     </div>
   )
 }

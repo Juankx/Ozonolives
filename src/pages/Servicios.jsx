@@ -1,5 +1,6 @@
 import React from 'react'
 import FeatureCard from '../components/FeatureCard'
+import Gallery from '../components/Gallery'
 
 const Servicios = () => {
   const services = [
@@ -208,6 +209,22 @@ const Servicios = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section className="section-padding bg-gray-50">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Nuestros Trabajos
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Galería de instalaciones y trabajos realizados por nuestro equipo profesional
+            </p>
+          </div>
+          
+          <Gallery />
         </div>
       </section>
 
