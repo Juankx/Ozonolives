@@ -13,7 +13,6 @@ const Repuestos = () => {
         description: 'Membrana de alta calidad para sistemas de ósmosis inversa residenciales e industriales.',
         category: 'osmosis',
         image: '/images/Membranadeosmosisinversa.jpeg',
-        price: '$89.99',
         features: ['Tamaño estándar 1812', 'Capacidad: 75 GPD', 'Vida útil: 2-3 años'],
         isPopular: true
       },
@@ -23,7 +22,6 @@ const Repuestos = () => {
         description: 'Filtro de carbón activado para remover cloro y mejorar el sabor del agua.',
         category: 'osmosis',
         image: '/images/Filtrosdecarbonactivado.jpeg',
-        price: '$24.99',
         features: ['Capacidad: 10,000 galones', 'Tamaño: 10" x 2.5"', 'Remueve cloro y sedimentos'],
         isNew: true
       },
@@ -33,7 +31,6 @@ const Repuestos = () => {
         description: 'Filtro de polipropileno para remover partículas y sedimentos del agua.',
         category: 'osmosis',
         image: '/images/Filtrosplisados.jpeg',
-        price: '$19.99',
         features: ['Micronaje: 5 micras', 'Tamaño: 10" x 2.5"', 'Capacidad: 15,000 galones']
       }
     ],
@@ -44,7 +41,6 @@ const Repuestos = () => {
         description: 'Unidad de generación de ozono para sistemas de purificación por ozonización.',
         category: 'ozono',
         image: '/images/Gtor.jpeg',
-        price: '$299.99',
         features: ['Producción: 2g/h', 'Voltaje: 220V', 'Incluye difusor'],
         isPopular: true
       },
@@ -54,7 +50,6 @@ const Repuestos = () => {
         description: 'Difusor de cerámica para distribución eficiente del ozono en el agua.',
         category: 'ozono',
         image: '/images/Cabezote.jpeg',
-        price: '$45.99',
         features: ['Material: Cerámica porosa', 'Tamaño: 2"', 'Compatible con sistemas estándar']
       },
       {
@@ -63,7 +58,6 @@ const Repuestos = () => {
         description: 'Sensor digital para monitorear niveles de ozono en tiempo real.',
         category: 'ozono',
         image: '/images/Diamantinox.jpeg',
-        price: '$89.99',
         features: ['Rango: 0-10 ppm', 'Display digital', 'Alarmas configurables']
       }
     ],
@@ -74,7 +68,6 @@ const Repuestos = () => {
         description: 'Filtro de arena de cuarzo para sistemas de filtración industrial.',
         category: 'filtracion',
         image: '/images/Filtrosgranulados.jpeg',
-        price: '$159.99',
         features: ['Capacidad: 50,000 galones', 'Tamaño: 24" x 48"', 'Material: Acero inoxidable'],
         isNew: true
       },
@@ -84,7 +77,6 @@ const Repuestos = () => {
         description: 'Válvula automática para control de flujo en sistemas de filtración.',
         category: 'filtracion',
         image: '/images/Carcasasbigblue.jpeg',
-        price: '$199.99',
         features: ['Control automático', 'Presión: 20-100 PSI', 'Conexión: 1" NPT']
       },
       {
@@ -93,7 +85,6 @@ const Repuestos = () => {
         description: 'Bomba centrífuga para sistemas de filtración que requieren alta presión.',
         category: 'filtracion',
         image: '/images/Filtrosmineralizados.jpeg',
-        price: '$399.99',
         features: ['Presión: 100 PSI', 'Flujo: 50 GPM', 'Motor: 2 HP']
       }
     ]
