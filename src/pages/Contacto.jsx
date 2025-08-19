@@ -117,7 +117,7 @@ const Contacto = () => {
       ),
       title: "Dirección",
       content: "📍 De los Guayacanes N53-210 entre Los Pinos y Belladonas, atrás del Hospital de Solca, Quito-Ecuador.",
-      link: "#"
+      link: "https://maps.app.goo.gl/WfaQJSje55F94nBM8"
     },
     {
       icon: (
@@ -355,7 +355,7 @@ const Contacto = () => {
               {/* Google Maps */}
               <div className="bg-gray-100 rounded-2xl h-64 overflow-hidden">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.785123456789!2d-78.456789!3d-0.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMMKwMDcnMjQuNCJTIDc4wrAyNycwNC40Ilc!5e0!3m2!1ses!2sec!4v1234567890"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.8071710529844!2d-78.47007199002508!3d-0.1354517998626402!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d58fd01675695b%3A0x5046af22ec61c123!2sOzono%20Live%20-%20Quito%2C%20Ecuador!5e0!3m2!1ses-419!2sec!4v1755568295918!5m2!1ses-419!2sec"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -365,6 +365,16 @@ const Contacto = () => {
                   title="Ubicación de Ozonolives en Quito, Ecuador"
                   className="w-full h-full"
                 ></iframe>
+              </div>
+              <div className="mt-3">
+                <a
+                  href="https://maps.app.goo.gl/WfaQJSje55F94nBM8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary-600 hover:text-primary-700 underline"
+                >
+                  Abrir en Google Maps
+                </a>
               </div>
             </div>
           </div>

@@ -7,30 +7,30 @@ const Home = () => {
   // Datos de productos destacados actualizados
   const featuredProducts = [
     {
-      id: 'p-001',
-      name: 'Sistema de Ósmosis Inversa Residencial',
-      description: 'Sistema completo de ósmosis inversa para hogares, elimina hasta 99% de contaminantes.',
-      category: 'osmosis',
-      price: '$599.99',
-      features: ['Capacidad: 75 GPD', '5 etapas de filtración', 'Tanque de almacenamiento incluido'],
+      id: 'oz-001',
+      name: 'OZONO PET',
+      description: 'Sistema de purificación por ozono para botellas PET, ideal para purificación de agua en botellas reutilizables.',
+      category: 'sistemasOzono',
+      image: '/images/Ozonopet.jpeg',
+      features: ['Producción: 3g/h de ozono', 'Capacidad: 500ml por ciclo', 'Tiempo de purificación: 5-10 min'],
       isPopular: true
     },
     {
-      id: 'p-004',
-      name: 'Sistema de Purificación por Ozono',
-      description: 'Sistema de ozonización para purificación completa del agua sin químicos.',
-      category: 'ozono',
-      price: '$899.99',
-      features: ['Producción: 5g/h', 'Control automático', 'Elimina bacterias y virus'],
+      id: 'oz-002',
+      name: 'DIAMANT INOX',
+      description: 'Sistema de ozonización industrial de alta capacidad con carcasa de acero inoxidable.',
+      category: 'sistemasOzono',
+      image: '/images/Diamantinox.jpeg',
+      features: ['Producción: 10g/h de ozono', 'Capacidad: 10,000 litros/hora', 'Control digital avanzado'],
       isNew: true
     },
     {
-      id: 'p-007',
-      name: 'Sistema de Filtración Multi-Etapa',
-      description: 'Sistema de filtración avanzada para agua potable residencial.',
-      category: 'filtracion',
-      price: '$299.99',
-      features: ['3 etapas de filtración', 'Filtro de sedimentos', 'Filtro de carbón activado']
+      id: 'oz-003',
+      name: 'GTOR',
+      description: 'Generador de ozono de alta eficiencia para aplicaciones comerciales y residenciales.',
+      category: 'sistemasOzono',
+      image: '/images/Gtor.jpeg',
+      features: ['Producción: 5g/h de ozono', 'Capacidad: 2,000 litros/hora', 'Timer programable']
     }
   ]
 
@@ -94,8 +94,6 @@ const Home = () => {
         description="Descubre soluciones innovadoras para la purificación del agua. Desde sistemas residenciales hasta soluciones industriales, garantizamos agua limpia y segura para tu hogar o negocio."
         primaryButtonText="Ver Productos"
         primaryButtonLink="/productos"
-        secondaryButtonText="Conoce Nuestra Empresa"
-        secondaryButtonLink="/empresa"
       />
 
       {/* Featured Products Section */}
@@ -110,19 +108,20 @@ const Home = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredProducts.map((product) => (
-              <ProductCard
-                key={product.id}
-                id={product.id}
-                name={product.name}
-                description={product.description}
-                category={product.category}
-                price={product.price}
-                features={product.features}
-                isNew={product.isNew}
-                isPopular={product.isPopular}
-              />
-            ))}
+                         {featuredProducts.map((product) => (
+               <ProductCard
+                 key={product.id}
+                 id={product.id}
+                 name={product.name}
+                 description={product.description}
+                 category={product.category}
+                 image={product.image}
+                 price={product.price}
+                 features={product.features}
+                 isNew={product.isNew}
+                 isPopular={product.isPopular}
+               />
+             ))}
           </div>
           <div className="text-center mt-12">
             <a href="/productos" className="btn-primary text-lg px-8 py-4">

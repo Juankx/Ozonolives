@@ -12,7 +12,7 @@ const Productos = () => {
         name: 'OZONO PET',
         description: 'Sistema de purificación por ozono para botellas PET, ideal para purificación de agua en botellas reutilizables.',
         category: 'sistemasOzono',
-        image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+        image: '/images/Ozonopet.jpeg',
         features: ['Producción: 3g/h de ozono', 'Capacidad: 500ml por ciclo', 'Tiempo de purificación: 5-10 min'],
         specifications: {
           'Potencia': '50W',
@@ -26,7 +26,7 @@ const Productos = () => {
         name: 'DIAMANT INOX',
         description: 'Sistema de ozonización industrial de alta capacidad con carcasa de acero inoxidable.',
         category: 'sistemasOzono',
-        image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=300&fit=crop',
+        image: '/images/Diamantinox.jpeg',
         features: ['Producción: 10g/h de ozono', 'Capacidad: 10,000 litros/hora', 'Control digital avanzado'],
         specifications: {
           'Potencia': '200W',
@@ -40,7 +40,7 @@ const Productos = () => {
         name: 'GTOR',
         description: 'Generador de ozono de alta eficiencia para aplicaciones comerciales y residenciales.',
         category: 'sistemasOzono',
-        image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+        image: '/images/Gtor.jpeg',
         features: ['Producción: 5g/h de ozono', 'Capacidad: 2,000 litros/hora', 'Timer programable'],
         specifications: {
           'Potencia': '100W',
@@ -54,7 +54,7 @@ const Productos = () => {
         name: 'CABEZOTE INOX',
         description: 'Cabezal de distribución de ozono en acero inoxidable para sistemas industriales.',
         category: 'sistemasOzono',
-        image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=300&fit=crop',
+        image: '/images/Cabezote.jpeg',
         features: ['Distribución uniforme', 'Resistente a corrosión', 'Conexiones estándar'],
         specifications: {
           'Material': 'Acero inoxidable 304',
@@ -70,7 +70,7 @@ const Productos = () => {
         name: 'Ósmosis Inversa 5 Etapas',
         description: 'Sistema de ósmosis inversa residencial de 5 etapas para purificación completa del agua.',
         category: 'sistemasOsmosis',
-        image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+        image: '/images/Osmosis5etapas.jpeg',
         features: ['5 etapas de filtración', 'Capacidad: 75 GPD', 'Tanque de almacenamiento incluido'],
         specifications: {
           'Capacidad': '75 GPD (283 L/día)',
@@ -84,7 +84,7 @@ const Productos = () => {
         name: 'Ósmosis Inversa 7 Etapas + Lámpara UV',
         description: 'Sistema avanzado de ósmosis inversa con 7 etapas y desinfección ultravioleta.',
         category: 'sistemasOsmosis',
-        image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=300&fit=crop',
+        image: '/images/Osmosis7etapas.jpeg',
         features: ['7 etapas de filtración', 'Lámpara UV germicida', 'Capacidad: 100 GPD', 'Control digital'],
         specifications: {
           'Capacidad': '100 GPD (378 L/día)',
@@ -101,7 +101,7 @@ const Productos = () => {
         name: 'Filtro de Sedimentos 5 Micras',
         description: 'Filtro de sedimentos de alta capacidad para retener partículas suspendidas.',
         category: 'filtrosPartes',
-        image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+        image: '/images/Filtrosplisados.jpeg',
         features: ['Filtración: 5 micras', 'Capacidad: 10,000 litros', 'Conexiones estándar'],
         specifications: {
           'Filtración': '5 micras',
@@ -115,7 +115,7 @@ const Productos = () => {
         name: 'Filtro de Carbón Activado',
         description: 'Filtro de carbón activado para eliminar cloro, sabores y olores del agua.',
         category: 'filtrosPartes',
-        image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=300&fit=crop',
+        image: '/images/Filtrosdecarbonactivado.jpeg',
         features: ['Elimina cloro', 'Mejora sabor y olor', 'Capacidad: 8,000 litros'],
         specifications: {
           'Filtración': 'Carbón activado',
@@ -129,7 +129,7 @@ const Productos = () => {
         name: 'Membrana de Ósmosis Inversa',
         description: 'Membrana de ósmosis inversa de alta eficiencia para sistemas residenciales.',
         category: 'filtrosPartes',
-        image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+        image: '/images/Membranadeosmosisinversa.jpeg',
         features: ['Rechazo: 95-98%', 'Capacidad: 75 GPD', 'Vida útil: 2-3 años'],
         specifications: {
           'Capacidad': '75 GPD',
@@ -143,7 +143,7 @@ const Productos = () => {
         name: 'Filtro Post-Carbón',
         description: 'Filtro de carbón post-ósmosis para mejorar el sabor final del agua.',
         category: 'filtrosPartes',
-        image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=300&fit=crop',
+        image: '/images/Filtropostcarbon.jpeg',
         features: ['Mejora sabor final', 'Capacidad: 6,000 litros', 'Instalación fácil'],
         specifications: {
           'Filtración': 'Carbón activado',
