@@ -3,16 +3,78 @@ import { Link, useLocation } from 'react-router-dom'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [isProductosOpen, setIsProductosOpen] = useState(false)
+  const [isRepuestosOpen, setIsRepuestosOpen] = useState(false)
   const location = useLocation()
 
   const navLinks = [
     { name: 'Inicio', path: '/' },
-    { name: 'Productos', path: '/productos' },
-    { name: 'Repuestos', path: '/repuestos' },
+    { name: 'Productos', path: '/productos', hasDropdown: true },
+    { name: 'Repuestos', path: '/repuestos', hasDropdown: true },
     { name: 'Contacto', path: '/contacto' }
   ]
 
+  const productosMenu = [
+    {
+      category: 'Equipos de Purificación a Base de Ozono',
+      items: [
+        { name: 'Diamant Inox', path: '/producto/diamant-inox' },
+        { name: 'Cabezote Inox', path: '/producto/cabezote-inox' },
+        { name: 'Ozono Dispent', path: '/producto/ozono-dispent' },
+        { name: 'Línea Fiesta – Nova', path: '/producto/linea-fiesta-nova' },
+        { name: 'Línea Fiesta – Manzana Verde', path: '/producto/linea-fiesta-manzana-verde' },
+        { name: 'Línea Fiesta – Manzana Roja', path: '/producto/linea-fiesta-manzana-roja' },
+        { name: 'Línea Fiesta – Vaca', path: '/producto/linea-fiesta-vaca' },
+        { name: 'Nova Touch', path: '/producto/nova-touch' }
+      ]
+    },
+    {
+      category: 'Sistemas de Filtración',
+      items: [
+        { name: 'Sistema de Filtración 2 Etapas', path: '/producto/filtracion-2-etapas' },
+        { name: 'Sistema de Filtración 3 Etapas', path: '/producto/filtracion-3-etapas' },
+        { name: 'Sistema de Filtración 4 Etapas', path: '/producto/filtracion-4-etapas' }
+      ]
+    },
+    {
+      category: 'Sistemas de Ósmosis Inversa',
+      items: [
+        { name: 'Sistema de Ósmosis Inversa de 5 Etapas', path: '/producto/osmosis-5-etapas' },
+        { name: 'Sistema de Ósmosis Inversa de 6 Etapas', path: '/producto/osmosis-6-etapas' },
+        { name: 'Sistema de Ósmosis Inversa de 7 Etapas', path: '/producto/osmosis-7-etapas' },
+        { name: 'Sistema de Ósmosis Inversa de 5 Etapas + Lámpara UV', path: '/producto/osmosis-5-etapas-uv' },
+        { name: 'Sistema de Ósmosis Inversa de 6 Etapas + Lámpara UV', path: '/producto/osmosis-6-etapas-uv' },
+        { name: 'Sistema de Ósmosis Inversa de 7 Etapas + Lámpara UV', path: '/producto/osmosis-7-etapas-uv' }
+      ]
+    }
+  ]
+
+  const repuestosMenu = [
+    {
+      category: 'Repuestos y Partes',
+      items: [
+        { name: 'Para Equipos a Base de Ozono', path: '/repuestos/equipos-ozono' },
+        { name: 'Para Equipos de Ósmosis Inversa', path: '/repuestos/equipos-osmosis' }
+      ]
+    }
+  ]
+
   const isActive = (path) => location.pathname === path
+
+  const handleMouseEnter = (menuType) => {
+    if (menuType === 'productos') {
+      setIsProductosOpen(true)
+      setIsRepuestosOpen(false)
+    } else if (menuType === 'repuestos') {
+      setIsRepuestosOpen(true)
+      setIsProductosOpen(false)
+    }
+  }
+
+  const handleMouseLeave = () => {
+    setIsProductosOpen(false)
+    setIsRepuestosOpen(false)
+  }
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-lg transition-all duration-300">
@@ -30,17 +92,98 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`font-medium transition-colors duration-300 ${
-                  isActive(link.path)
-                    ? 'text-primary-600'
-                    : 'text-gray-700 hover:text-primary-600'
-                }`}
-              >
-                {link.name}
-              </Link>
+              <div key={link.path} className="relative">
+                {link.hasDropdown ? (
+                  <div
+                    className="relative"
+                    onMouseEnter={() => handleMouseEnter(link.name === 'Productos' ? 'productos' : 'repuestos')}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <button
+                      className={`font-medium transition-colors duration-300 flex items-center space-x-1 ${
+                        isActive(link.path)
+                          ? 'text-primary-600'
+                          : 'text-gray-700 hover:text-primary-600'
+                      }`}
+                    >
+                      <span>{link.name}</span>
+                      <svg className="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+
+                    {/* Dropdown Menu */}
+                    {((link.name === 'Productos' && isProductosOpen) || (link.name === 'Repuestos' && isRepuestosOpen)) && (
+                      <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-xl border border-gray-200 py-4 z-50">
+                        {link.name === 'Productos' ? (
+                          <div className="space-y-4">
+                            {productosMenu.map((section, sectionIndex) => (
+                              <div key={sectionIndex} className="px-4">
+                                <h3 className="text-sm font-semibold text-primary-600 mb-2 border-b border-gray-100 pb-1">
+                                  {section.category}
+                                </h3>
+                                <ul className="space-y-1">
+                                  {section.items.map((item, itemIndex) => (
+                                    <li key={itemIndex}>
+                                      <Link
+                                        to={item.path}
+                                        className="block px-3 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600 rounded-md transition-colors duration-200"
+                                        onClick={() => {
+                                          setIsProductosOpen(false)
+                                          setIsRepuestosOpen(false)
+                                        }}
+                                      >
+                                        {item.name}
+                                      </Link>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="px-4">
+                            {repuestosMenu.map((section, sectionIndex) => (
+                              <div key={sectionIndex}>
+                                <h3 className="text-sm font-semibold text-primary-600 mb-2 border-b border-gray-100 pb-1">
+                                  {section.category}
+                                </h3>
+                                <ul className="space-y-1">
+                                  {section.items.map((item, itemIndex) => (
+                                    <li key={itemIndex}>
+                                      <Link
+                                        to={item.path}
+                                        className="block px-3 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600 rounded-md transition-colors duration-200"
+                                        onClick={() => {
+                                          setIsProductosOpen(false)
+                                          setIsRepuestosOpen(false)
+                                        }}
+                                      >
+                                        {item.name}
+                                      </Link>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    to={link.path}
+                    className={`font-medium transition-colors duration-300 ${
+                      isActive(link.path)
+                        ? 'text-primary-600'
+                        : 'text-gray-700 hover:text-primary-600'
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                )}
+              </div>
             ))}
           </div>
 
@@ -94,18 +237,99 @@ const Navbar = () => {
         }`}>
           <div className="py-4 space-y-2">
             {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                onClick={() => setIsOpen(false)}
-                className={`block px-4 py-3 rounded-lg font-medium transition-colors duration-300 ${
-                  isActive(link.path)
-                    ? 'bg-primary-600 text-white'
-                    : 'text-gray-700 hover:bg-gray-100'
-                }`}
-              >
-                {link.name}
-              </Link>
+              <div key={link.path}>
+                {link.hasDropdown ? (
+                  <div>
+                    <button
+                      onClick={() => {
+                        if (link.name === 'Productos') {
+                          setIsProductosOpen(!isProductosOpen)
+                          setIsRepuestosOpen(false)
+                        } else if (link.name === 'Repuestos') {
+                          setIsRepuestosOpen(!isRepuestosOpen)
+                          setIsProductosOpen(false)
+                        }
+                      }}
+                      className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-colors duration-300 flex items-center justify-between ${
+                        isActive(link.path)
+                          ? 'bg-primary-600 text-white'
+                          : 'text-gray-700 hover:bg-gray-100'
+                      }`}
+                    >
+                      {link.name}
+                      <svg className={`w-4 h-4 transition-transform duration-200 ${
+                        ((link.name === 'Productos' && isProductosOpen) || (link.name === 'Repuestos' && isRepuestosOpen))
+                          ? 'rotate-180' : ''
+                      }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                    
+                    {/* Mobile Dropdown */}
+                    {((link.name === 'Productos' && isProductosOpen) || (link.name === 'Repuestos' && isRepuestosOpen)) && (
+                      <div className="ml-4 mt-2 space-y-2">
+                        {link.name === 'Productos' ? (
+                          productosMenu.map((section, sectionIndex) => (
+                            <div key={sectionIndex} className="space-y-2">
+                              <h4 className="text-sm font-semibold text-primary-600 px-4">
+                                {section.category}
+                              </h4>
+                              {section.items.map((item, itemIndex) => (
+                                <Link
+                                  key={itemIndex}
+                                  to={item.path}
+                                  onClick={() => {
+                                    setIsOpen(false)
+                                    setIsProductosOpen(false)
+                                    setIsRepuestosOpen(false)
+                                  }}
+                                  className="block px-8 py-2 text-sm text-gray-600 hover:text-primary-600 transition-colors duration-200"
+                                >
+                                  {item.name}
+                                </Link>
+                              ))}
+                            </div>
+                          ))
+                        ) : (
+                          repuestosMenu.map((section, sectionIndex) => (
+                            <div key={sectionIndex} className="space-y-2">
+                              <h4 className="text-sm font-semibold text-primary-600 px-4">
+                                {section.category}
+                              </h4>
+                              {section.items.map((item, itemIndex) => (
+                                <Link
+                                  key={itemIndex}
+                                  to={item.path}
+                                  onClick={() => {
+                                    setIsOpen(false)
+                                    setIsProductosOpen(false)
+                                    setIsRepuestosOpen(false)
+                                  }}
+                                  className="block px-8 py-2 text-sm text-gray-600 hover:text-primary-600 transition-colors duration-200"
+                                >
+                                  {item.name}
+                                </Link>
+                              ))}
+                            </div>
+                          ))
+                        )}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    to={link.path}
+                    onClick={() => setIsOpen(false)}
+                    className={`block px-4 py-3 rounded-lg font-medium transition-colors duration-300 ${
+                      isActive(link.path)
+                        ? 'bg-primary-600 text-white'
+                        : 'text-gray-700 hover:bg-gray-100'
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                )}
+              </div>
             ))}
           </div>
           
