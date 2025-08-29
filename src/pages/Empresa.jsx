@@ -81,7 +81,7 @@ const Empresa = () => {
               Nuestros Valores
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Los principios que guían cada decisión y acción en Ozonolives
+              Los principios que guían cada decisión y acción en Ozonolive
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

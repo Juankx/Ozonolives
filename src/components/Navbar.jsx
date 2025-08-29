@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 const Navbar = () => {
@@ -7,12 +7,11 @@ const Navbar = () => {
   const [isRepuestosOpen, setIsRepuestosOpen] = useState(false)
   const [hoveredCategory, setHoveredCategory] = useState(null)
   const location = useLocation()
-  
-  // Referencias para los elementos del menú
-  const productosRef = useRef(null)
-  const repuestosRef = useRef(null)
-  const productosMenuRef = useRef(null)
-  const repuestosMenuRef = useRef(null)
+
+  // Cerrar todos los menús cuando cambie la página
+  useEffect(() => {
+    closeAllMenus()
+  }, [location.pathname])
 
   const navLinks = [
     { name: 'Inicio', path: '/' },
@@ -21,130 +20,75 @@ const Navbar = () => {
     { name: 'Contacto', path: '/contacto' }
   ]
 
+  // Menú de productos con enlaces a páginas específicas
   const productosMenu = [
     {
-      category: 'Equipos de Purificación a Base de Ozono',
+      category: 'Equipos de Purificación a base de ozono',
       items: [
-        { name: 'Diamant Inox', path: '/producto/diamant-inox' },
-        { name: 'Cabezote Inox', path: '/producto/cabezote-inox' },
-        { name: 'Ozono Dispent', path: '/producto/ozono-dispent' },
-        { name: 'Línea Fiesta – Nova', path: '/producto/linea-fiesta-nova' },
-        { name: 'Línea Fiesta – Manzana Verde', path: '/producto/linea-fiesta-manzana-verde' },
-        { name: 'Línea Fiesta – Manzana Roja', path: '/producto/linea-fiesta-manzana-roja' },
-        { name: 'Línea Fiesta – Vaca', path: '/producto/linea-fiesta-vaca' },
-        { name: 'Nova Touch', path: '/producto/nova-touch' }
+        { name: 'OZONO PET', path: '/producto/oz-001' },
+        { name: 'Diamant Inox', path: '/producto/oz-002' },
+        { name: 'GTOR', path: '/producto/oz-003' },
+        { name: 'Cabezote Inox', path: '/producto/oz-004' },
+        { name: 'Ozono Dispent', path: '/productos?category=equiposOzono' },
+        { name: 'Línea Fiesta – Nova', path: '/productos?category=equiposOzono' },
+        { name: 'Línea Fiesta – Manzana Verde', path: '/productos?category=equiposOzono' },
+        { name: 'Línea Fiesta – Manzana Roja', path: '/productos?category=equiposOzono' },
+        { name: 'Línea Fiesta – Vaca', path: '/productos?category=equiposOzono' },
+        { name: 'Nova Touch', path: '/productos?category=equiposOzono' }
       ]
     },
     {
-      category: 'Sistemas de Filtración',
+      category: 'Sistemas de filtración',
       items: [
-        { name: 'Sistema de Filtración 2 Etapas', path: '/producto/filtracion-2-etapas' },
-        { name: 'Sistema de Filtración 3 Etapas', path: '/producto/filtracion-3-etapas' },
-        { name: 'Sistema de Filtración 4 Etapas', path: '/producto/filtracion-4-etapas' }
+        { name: 'Filtros de Polident (Sedimentos)', path: '/producto/sf-001' },
+        { name: 'Filtros de Carbón Activado en Bloque', path: '/producto/sf-002' },
+        { name: 'Filtros Granulados', path: '/producto/sf-003' },
+        { name: 'Filtros Plisados', path: '/producto/sf-004' },
+        { name: 'Filtros Mixtos', path: '/producto/sf-005' },
+        { name: 'Filtros Mineralizadores', path: '/producto/sf-006' },
+        { name: 'Sistema de filtración 2 etapas', path: '/productos?category=sistemasFiltracion' },
+        { name: 'Sistema de filtración 3 etapas', path: '/productos?category=sistemasFiltracion' },
+        { name: 'Sistema de filtración 4 etapas', path: '/productos?category=sistemasFiltracion' }
       ]
     },
     {
       category: 'Sistemas de Ósmosis Inversa',
       items: [
-        { name: 'Sistema de Ósmosis Inversa de 5 Etapas', path: '/producto/osmosis-5-etapas' },
-        { name: 'Sistema de Ósmosis Inversa de 6 Etapas', path: '/producto/osmosis-6-etapas' },
-        { name: 'Sistema de Ósmosis Inversa de 7 Etapas', path: '/producto/osmosis-7-etapas' },
-        { name: 'Sistema de Ósmosis Inversa de 5 Etapas + Lámpara UV', path: '/producto/osmosis-5-etapas-uv' },
-        { name: 'Sistema de Ósmosis Inversa de 6 Etapas + Lámpara UV', path: '/producto/osmosis-6-etapas-uv' },
-        { name: 'Sistema de Ósmosis Inversa de 7 Etapas + Lámpara UV', path: '/producto/osmosis-7-etapas-uv' }
+        { name: 'Ósmosis Inversa de 5 etapas', path: '/producto/so-001' },
+        { name: 'Ósmosis Inversa de 6 etapas', path: '/productos?category=sistemasOsmosis' },
+        { name: 'Ósmosis Inversa de 7 etapas', path: '/producto/so-002' },
+        { name: 'Ósmosis Inversa de 5 etapas + Lámpara UV', path: '/productos?category=sistemasOsmosis' },
+        { name: 'Ósmosis Inversa de 6 etapas + Lámpara UV', path: '/productos?category=sistemasOsmosis' },
+        { name: 'Ósmosis Inversa de 7 etapas + Lámpara UV', path: '/producto/so-002' }
       ]
     }
   ]
 
+  // Menú de repuestos con enlaces a páginas específicas
   const repuestosMenu = [
     {
-      category: 'Repuestos y Partes',
+      category: 'Repuestos y partes',
       items: [
-        { name: 'Para Equipos a Base de Ozono', path: '/repuestos/equipos-ozono' },
-        { name: 'Para Equipos de Ósmosis Inversa', path: '/repuestos/equipos-osmosis' }
+        { name: 'Membrana de Ósmosis Inversa', path: '/producto/rp-001' },
+        { name: 'Filtro Post Carbón', path: '/producto/rp-002' },
+        { name: 'Carcasas Big Blue', path: '/producto/rp-003' },
+        { name: 'Para equipos a base de ozono', path: '/productos?category=equiposOzono' },
+        { name: 'Para equipos de ósmosis inversa', path: '/productos?category=sistemasOsmosis' }
       ]
     }
   ]
 
   const isActive = (path) => location.pathname === path
 
-  // Función para abrir menú de productos
-  const openProductosMenu = () => {
-    setIsProductosOpen(true)
-    setIsRepuestosOpen(false)
+  const handleCategoryHover = (category) => {
+    setHoveredCategory(category)
   }
 
-  // Función para abrir menú de repuestos
-  const openRepuestosMenu = () => {
-    setIsRepuestosOpen(true)
-    setIsProductosOpen(false)
-  }
-
-  // Función para cerrar todos los menús
   const closeAllMenus = () => {
     setIsProductosOpen(false)
     setIsRepuestosOpen(false)
     setHoveredCategory(null)
   }
-
-  // Función para manejar hover en categorías
-  const handleCategoryHover = (category) => {
-    setHoveredCategory(category)
-  }
-
-  // Verificar si el mouse está dentro del área del menú
-  const isMouseInMenu = (event, menuRef) => {
-    if (!menuRef.current) return false
-    const rect = menuRef.current.getBoundingClientRect()
-    return (
-      event.clientX >= rect.left &&
-      event.clientX <= rect.right &&
-      event.clientY >= rect.top &&
-      event.clientY <= rect.bottom
-    )
-  }
-
-  // Verificar si el mouse está dentro del botón del menú
-  const isMouseInButton = (event, buttonRef) => {
-    if (!buttonRef.current) return false
-    const rect = buttonRef.current.getBoundingClientRect()
-    return (
-      event.clientX >= rect.left &&
-      event.clientX <= rect.right &&
-      event.clientY >= rect.top &&
-      event.clientY <= rect.bottom
-    )
-  }
-
-  // Manejador global de mouse move para cerrar menús cuando sea necesario
-  useEffect(() => {
-    const handleMouseMove = (event) => {
-      // Si no hay menús abiertos, no hacer nada
-      if (!isProductosOpen && !isRepuestosOpen) return
-
-      // Verificar si el mouse está en algún menú o botón
-      const inProductosMenu = isMouseInMenu(event, productosMenuRef)
-      const inRepuestosMenu = isMouseInMenu(event, repuestosMenuRef)
-      const inProductosButton = isMouseInButton(event, productosRef)
-      const inRepuestosButton = isMouseInButton(event, repuestosRef)
-
-      // Si el mouse no está en ningún menú ni botón, cerrar todos los menús
-      if (!inProductosMenu && !inRepuestosMenu && !inProductosButton && !inRepuestosButton) {
-        // Solo cerrar si el mouse ha salido completamente del área
-        setTimeout(() => {
-          if (!isMouseInMenu(event, productosMenuRef) && 
-              !isMouseInButton(event, productosRef) &&
-              !isMouseInMenu(event, repuestosMenuRef) && 
-              !isMouseInButton(event, repuestosRef)) {
-            closeAllMenus()
-          }
-        }, 150)
-      }
-    }
-
-    document.addEventListener('mousemove', handleMouseMove)
-    return () => document.removeEventListener('mousemove', handleMouseMove)
-  }, [isProductosOpen, isRepuestosOpen])
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-lg transition-all duration-300">
@@ -165,44 +109,36 @@ const Navbar = () => {
               <div key={link.path} className="relative">
                 {link.hasDropdown ? (
                   <div className="relative">
-                    {link.name === 'Productos' ? (
-                      <button
-                        ref={productosRef}
-                        onMouseEnter={openProductosMenu}
-                        className={`font-medium transition-colors duration-300 flex items-center space-x-1 ${
-                          isActive(link.path)
-                            ? 'text-primary-600'
-                            : 'text-gray-700 hover:text-primary-600'
-                        }`}
-                      >
-                        <span>{link.name}</span>
-                        <svg className="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </button>
-                    ) : link.name === 'Repuestos' ? (
-                      <button
-                        ref={repuestosRef}
-                        onMouseEnter={openRepuestosMenu}
-                        className={`font-medium transition-colors duration-300 flex items-center space-x-1 ${
-                          isActive(link.path)
-                            ? 'text-primary-600'
-                            : 'text-gray-700 hover:text-primary-600'
-                        }`}
-                      >
-                        <span>{link.name}</span>
-                        <svg className="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </button>
-                    ) : null}
+                    <button
+                      onMouseEnter={() => {
+                        if (link.name === 'Productos') {
+                          setIsProductosOpen(true)
+                          setIsRepuestosOpen(false)
+                        } else if (link.name === 'Repuestos') {
+                          setIsRepuestosOpen(true)
+                          setIsProductosOpen(false)
+                        }
+                      }}
+                      className={`font-medium transition-colors duration-300 flex items-center space-x-1 ${
+                        isActive(link.path)
+                          ? 'text-primary-600'
+                          : 'text-gray-700 hover:text-primary-600'
+                      }`}
+                    >
+                      <span>{link.name}</span>
+                      <svg className="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
 
                     {/* Dropdown Menu Productos */}
-                    {isProductosOpen && (
+                    {link.name === 'Productos' && isProductosOpen && (
                       <div 
-                        ref={productosMenuRef}
                         className="absolute top-full left-0 mt-2 w-96 bg-white rounded-lg shadow-xl border border-gray-200 py-4 z-50"
                         onMouseEnter={() => setIsProductosOpen(true)}
+                        onMouseLeave={() => {
+                          setTimeout(() => setIsProductosOpen(false), 1)
+                        }}
                       >
                         <div className="flex">
                           {/* Columna izquierda con categorías */}
@@ -245,11 +181,13 @@ const Navbar = () => {
                     )}
 
                     {/* Dropdown Menu Repuestos */}
-                    {isRepuestosOpen && (
+                    {link.name === 'Repuestos' && isRepuestosOpen && (
                       <div 
-                        ref={repuestosMenuRef}
                         className="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-xl border border-gray-200 py-4 z-50"
                         onMouseEnter={() => setIsRepuestosOpen(true)}
+                        onMouseLeave={() => {
+                          setTimeout(() => setIsRepuestosOpen(false), 1)
+                        }}
                       >
                         <div className="px-4">
                           {repuestosMenu.map((section, sectionIndex) => (

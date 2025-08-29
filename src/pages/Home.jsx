@@ -2,35 +2,28 @@ import React from 'react'
 import HeroSection from '../components/HeroSection'
 import ProductCard from '../components/ProductCard'
 import FeatureCard from '../components/FeatureCard'
+import { Link } from 'react-router-dom';
 
 const Home = () => {
-  // Datos de productos destacados actualizados
+  // Productos destacados - solo OZONO PET y Diamant Inox
   const featuredProducts = [
     {
       id: 'oz-001',
       name: 'OZONO PET',
-      description: 'Sistema de purificación por ozono para botellas PET, ideal para purificación de agua en botellas reutilizables.',
-      category: 'sistemasOzono',
+      description: 'Este producto ha sido desarrollado con un diseño básico pero funcional para el aseo e higiene de mascotas, está al alcance de todos aquellos que quieren ofrecer algo novedoso a sus clientes y a la vez muy saludable para nuestra familia de peludos, convirtiendo su uso en un SPA para nuestras mascotas.',
       image: '/images/Ozonopet.jpeg',
-      features: ['Producción: 3g/h de ozono', 'Capacidad: 500ml por ciclo', 'Tiempo de purificación: 5-10 min'],
+      category: 'Equipos de Purificación a Base de Ozono',
+      isNew: true,
       isPopular: true
     },
     {
       id: 'oz-002',
       name: 'DIAMANT INOX',
-      description: 'Sistema de ozonización industrial de alta capacidad con carcasa de acero inoxidable.',
-      category: 'sistemasOzono',
+      description: 'Mini planta de purificación de agua ideal para uso doméstico, elaborada en acero inoxidable (.1 quirúrgico). Elimina: sedimentos, piedras, pesticidas, cloro, bacterias y virus. Con el revolucionario sistema de purificación de agua a base de Ozono.',
       image: '/images/Diamantinox.jpeg',
-      features: ['Producción: 10g/h de ozono', 'Capacidad: 10,000 litros/hora', 'Control digital avanzado'],
-      isNew: true
-    },
-    {
-      id: 'oz-003',
-      name: 'GTOR',
-      description: 'Generador de ozono de alta eficiencia para aplicaciones comerciales y residenciales.',
-      category: 'sistemasOzono',
-      image: '/images/Gtor.jpeg',
-      features: ['Producción: 5g/h de ozono', 'Capacidad: 2,000 litros/hora', 'Timer programable']
+      category: 'Equipos de Purificación a Base de Ozono',
+      isNew: false,
+      isPopular: true
     }
   ]
 
@@ -67,7 +60,7 @@ const Home = () => {
       position: "Propietaria de Restaurante",
       content: "El sistema de ósmosis inversa de Ozonolives transformó completamente la calidad del agua en nuestro restaurante. Nuestros clientes notan la diferencia.",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
+      image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=100&h=100&fit=crop&crop=face"
     },
     {
       name: "Carlos Rodríguez",
@@ -97,46 +90,49 @@ const Home = () => {
       />
 
       {/* Featured Products Section */}
-      <section className="section-padding bg-gray-50">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Productos Destacados
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Nuestras soluciones más populares en purificación de agua
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                         {featuredProducts.map((product) => (
-               <ProductCard
-                 key={product.id}
-                 id={product.id}
-                 name={product.name}
-                 description={product.description}
-                 category={product.category}
-                 image={product.image}
-                 price={product.price}
-                 features={product.features}
-                 isNew={product.isNew}
-                 isPopular={product.isPopular}
-               />
-             ))}
-          </div>
-          <div className="text-center mt-12">
-            <a href="/productos" className="btn-primary text-lg px-8 py-4">
-              Ver Todos los Productos
-            </a>
-          </div>
-        </div>
-      </section>
+          {/* Productos Destacados */}
+          <section className="section-padding">
+            <div className="container-custom">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                  Productos Destacados
+                </h2>
+                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                  Descubre nuestras soluciones más populares en purificación de agua
+                </p>
+              </div>
+
+              <div className="flex justify-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
+                  {featuredProducts.map((product) => (
+                    <ProductCard
+                      key={product.id}
+                      {...product}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div className="text-center mt-12">
+                <Link
+                  to="/productos"
+                  className="btn-primary text-lg px-8 py-4 inline-flex items-center space-x-2"
+                >
+                  <span>Ver Todos los Productos</span>
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          </section>
 
       {/* Features Section */}
       <section className="section-padding">
         <div className="container-custom">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              ¿Por qué elegir Ozonolives?
+              ¿Por qué elegir Ozonolive?
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Nuestras ventajas competitivas en el mercado de la purificación de agua

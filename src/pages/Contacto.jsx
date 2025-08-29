@@ -105,8 +105,8 @@ const Contacto = () => {
         </svg>
       ),
       title: "Email",
-      content: "info@ozonolives.com",
-      link: "mailto:info@ozonolives.com"
+      content: "ozonolive14@gmail.com",
+      link: "mailto:ozonolive14@gmail.com"
     },
     {
       icon: (
@@ -125,9 +125,9 @@ const Contacto = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
-      title: "Horarios",
-      content: "Lun - Vie: 8:00 - 18:00",
-      link: "#"
+      title: "Horarios de Atención",
+      content: "Lunes a viernes 8:30 a 17:30 y Sábado 9:00 a 12:30",
+      link: null
     }
   ]
 
@@ -341,12 +341,16 @@ const Contacto = () => {
                       <h3 className="font-semibold text-gray-900 mb-1">
                         {info.title}
                       </h3>
-                      <a
-                        href={info.link}
-                        className="text-primary-600 hover:text-primary-700 transition-colors"
-                      >
-                        {info.content}
-                      </a>
+                      {info.link ? (
+                        <a
+                          href={info.link}
+                          className="text-primary-600 hover:text-primary-700 transition-colors"
+                        >
+                          {info.content}
+                        </a>
+                      ) : (
+                        <p>{info.content}</p>
+                      )}
                     </div>
                   </div>
                 ))}
