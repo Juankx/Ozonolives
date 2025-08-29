@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 const Navbar = () => {
@@ -7,6 +7,12 @@ const Navbar = () => {
   const [isRepuestosOpen, setIsRepuestosOpen] = useState(false)
   const [hoveredCategory, setHoveredCategory] = useState(null)
   const location = useLocation()
+  
+  // Referencias para los elementos del menú
+  const productosRef = useRef(null)
+  const repuestosRef = useRef(null)
+  const productosMenuRef = useRef(null)
+  const repuestosMenuRef = useRef(null)
 
   const navLinks = [
     { name: 'Inicio', path: '/' },
@@ -62,39 +68,83 @@ const Navbar = () => {
 
   const isActive = (path) => location.pathname === path
 
-  const handleMouseEnter = (menuType) => {
-    if (menuType === 'productos') {
-      setIsProductosOpen(true)
-      setIsRepuestosOpen(false)
-    } else if (menuType === 'repuestos') {
-      setIsRepuestosOpen(true)
-      setIsProductosOpen(false)
-    }
-  }
-
-  const handleMouseLeave = () => {
-    // Solo cerrar si no hay hover en el menú desplegable
-    setTimeout(() => {
-      if (!hoveredCategory) {
-        setIsProductosOpen(false)
-        setIsRepuestosOpen(false)
-      }
-    }, 100)
-  }
-
-  const handleMenuMouseEnter = () => {
-    // Mantener el menú abierto cuando el mouse está sobre él
-  }
-
-  const handleMenuMouseLeave = () => {
-    setHoveredCategory(null)
-    setIsProductosOpen(false)
+  // Función para abrir menú de productos
+  const openProductosMenu = () => {
+    setIsProductosOpen(true)
     setIsRepuestosOpen(false)
   }
 
+  // Función para abrir menú de repuestos
+  const openRepuestosMenu = () => {
+    setIsRepuestosOpen(true)
+    setIsProductosOpen(false)
+  }
+
+  // Función para cerrar todos los menús
+  const closeAllMenus = () => {
+    setIsProductosOpen(false)
+    setIsRepuestosOpen(false)
+    setHoveredCategory(null)
+  }
+
+  // Función para manejar hover en categorías
   const handleCategoryHover = (category) => {
     setHoveredCategory(category)
   }
+
+  // Verificar si el mouse está dentro del área del menú
+  const isMouseInMenu = (event, menuRef) => {
+    if (!menuRef.current) return false
+    const rect = menuRef.current.getBoundingClientRect()
+    return (
+      event.clientX >= rect.left &&
+      event.clientX <= rect.right &&
+      event.clientY >= rect.top &&
+      event.clientY <= rect.bottom
+    )
+  }
+
+  // Verificar si el mouse está dentro del botón del menú
+  const isMouseInButton = (event, buttonRef) => {
+    if (!buttonRef.current) return false
+    const rect = buttonRef.current.getBoundingClientRect()
+    return (
+      event.clientX >= rect.left &&
+      event.clientX <= rect.right &&
+      event.clientY >= rect.top &&
+      event.clientY <= rect.bottom
+    )
+  }
+
+  // Manejador global de mouse move para cerrar menús cuando sea necesario
+  useEffect(() => {
+    const handleMouseMove = (event) => {
+      // Si no hay menús abiertos, no hacer nada
+      if (!isProductosOpen && !isRepuestosOpen) return
+
+      // Verificar si el mouse está en algún menú o botón
+      const inProductosMenu = isMouseInMenu(event, productosMenuRef)
+      const inRepuestosMenu = isMouseInMenu(event, repuestosMenuRef)
+      const inProductosButton = isMouseInButton(event, productosRef)
+      const inRepuestosButton = isMouseInButton(event, repuestosRef)
+
+      // Si el mouse no está en ningún menú ni botón, cerrar todos los menús
+      if (!inProductosMenu && !inRepuestosMenu && !inProductosButton && !inRepuestosButton) {
+        // Solo cerrar si el mouse ha salido completamente del área
+        setTimeout(() => {
+          if (!isMouseInMenu(event, productosMenuRef) && 
+              !isMouseInButton(event, productosRef) &&
+              !isMouseInMenu(event, repuestosMenuRef) && 
+              !isMouseInButton(event, repuestosRef)) {
+            closeAllMenus()
+          }
+        }, 150)
+      }
+    }
+
+    document.addEventListener('mousemove', handleMouseMove)
+    return () => document.removeEventListener('mousemove', handleMouseMove)
+  }, [isProductosOpen, isRepuestosOpen])
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-lg transition-all duration-300">
@@ -114,101 +164,115 @@ const Navbar = () => {
             {navLinks.map((link) => (
               <div key={link.path} className="relative">
                 {link.hasDropdown ? (
-                  <div
-                    className="relative"
-                    onMouseEnter={() => handleMouseEnter(link.name === 'Productos' ? 'productos' : 'repuestos')}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    <button
-                      className={`font-medium transition-colors duration-300 flex items-center space-x-1 ${
-                        isActive(link.path)
-                          ? 'text-primary-600'
-                          : 'text-gray-700 hover:text-primary-600'
-                      }`}
-                    >
-                      <span>{link.name}</span>
-                      <svg className="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </button>
-
-                    {/* Dropdown Menu */}
-                    {((link.name === 'Productos' && isProductosOpen) || (link.name === 'Repuestos' && isRepuestosOpen)) && (
-                      <div 
-                        className="absolute top-full left-0 mt-2 w-96 bg-white rounded-lg shadow-xl border border-gray-200 py-4 z-50"
-                        onMouseEnter={handleMenuMouseEnter}
-                        onMouseLeave={handleMenuMouseLeave}
+                  <div className="relative">
+                    {link.name === 'Productos' ? (
+                      <button
+                        ref={productosRef}
+                        onMouseEnter={openProductosMenu}
+                        className={`font-medium transition-colors duration-300 flex items-center space-x-1 ${
+                          isActive(link.path)
+                            ? 'text-primary-600'
+                            : 'text-gray-700 hover:text-primary-600'
+                        }`}
                       >
-                        {link.name === 'Productos' ? (
-                          <div className="flex">
-                            {/* Columna izquierda con categorías */}
-                            <div className="w-1/2 border-r border-gray-200">
-                              {productosMenu.map((section, sectionIndex) => (
-                                <div 
-                                  key={sectionIndex} 
-                                  className="px-4 py-2 hover:bg-gray-50 transition-colors duration-200 cursor-pointer"
-                                  onMouseEnter={() => handleCategoryHover(section.category)}
-                                >
-                                  <h3 className="text-sm font-semibold text-primary-600">
-                                    {section.category}
-                                  </h3>
-                                </div>
-                              ))}
-                            </div>
-                            
-                            {/* Columna derecha con productos */}
-                            <div className="w-1/2">
-                              {hoveredCategory && (
-                                <div className="px-4">
-                                  {productosMenu
-                                    .find(section => section.category === hoveredCategory)
-                                    ?.items.map((item, itemIndex) => (
-                                      <div key={itemIndex} className="py-1">
-                                        <Link
-                                          to={item.path}
-                                          className="block px-3 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600 rounded-md transition-colors duration-200"
-                                          onClick={() => {
-                                            setIsProductosOpen(false)
-                                            setIsRepuestosOpen(false)
-                                            setHoveredCategory(null)
-                                          }}
-                                        >
-                                          {item.name}
-                                        </Link>
-                                      </div>
-                                    ))}
-                                </div>
-                              )}
-                            </div>
-                          </div>
-                        ) : (
-                          <div className="px-4">
-                            {repuestosMenu.map((section, sectionIndex) => (
-                              <div key={sectionIndex}>
-                                <h3 className="text-sm font-semibold text-primary-600 mb-2 border-b border-gray-100 pb-1">
+                        <span>{link.name}</span>
+                        <svg className="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                    ) : link.name === 'Repuestos' ? (
+                      <button
+                        ref={repuestosRef}
+                        onMouseEnter={openRepuestosMenu}
+                        className={`font-medium transition-colors duration-300 flex items-center space-x-1 ${
+                          isActive(link.path)
+                            ? 'text-primary-600'
+                            : 'text-gray-700 hover:text-primary-600'
+                        }`}
+                      >
+                        <span>{link.name}</span>
+                        <svg className="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                    ) : null}
+
+                    {/* Dropdown Menu Productos */}
+                    {isProductosOpen && (
+                      <div 
+                        ref={productosMenuRef}
+                        className="absolute top-full left-0 mt-2 w-96 bg-white rounded-lg shadow-xl border border-gray-200 py-4 z-50"
+                        onMouseEnter={() => setIsProductosOpen(true)}
+                      >
+                        <div className="flex">
+                          {/* Columna izquierda con categorías */}
+                          <div className="w-1/2 border-r border-gray-200">
+                            {productosMenu.map((section, sectionIndex) => (
+                              <div 
+                                key={sectionIndex} 
+                                className="px-4 py-2 hover:bg-gray-50 transition-colors duration-200 cursor-pointer"
+                                onMouseEnter={() => handleCategoryHover(section.category)}
+                              >
+                                <h3 className="text-sm font-semibold text-primary-600">
                                   {section.category}
                                 </h3>
-                                <ul className="space-y-1">
-                                  {section.items.map((item, itemIndex) => (
-                                    <li key={itemIndex}>
-                                      <Link
-                                        to={item.path}
-                                        className="block px-3 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600 rounded-md transition-colors duration-200"
-                                        onClick={() => {
-                                          setIsProductosOpen(false)
-                                          setIsRepuestosOpen(false)
-                                          setHoveredCategory(null)
-                                        }}
-                                      >
-                                        {item.name}
-                                      </Link>
-                                    </li>
-                                  ))}
-                                </ul>
                               </div>
                             ))}
                           </div>
-                        )}
+                          
+                          {/* Columna derecha con productos */}
+                          <div className="w-1/2">
+                            {hoveredCategory && (
+                              <div className="px-4">
+                                {productosMenu
+                                  .find(section => section.category === hoveredCategory)
+                                  ?.items.map((item, itemIndex) => (
+                                    <div key={itemIndex} className="py-1">
+                                      <Link
+                                        to={item.path}
+                                        className="block px-3 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600 rounded-md transition-colors duration-200"
+                                        onClick={closeAllMenus}
+                                      >
+                                        {item.name}
+                                      </Link>
+                                    </div>
+                                  ))}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Dropdown Menu Repuestos */}
+                    {isRepuestosOpen && (
+                      <div 
+                        ref={repuestosMenuRef}
+                        className="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-xl border border-gray-200 py-4 z-50"
+                        onMouseEnter={() => setIsRepuestosOpen(true)}
+                      >
+                        <div className="px-4">
+                          {repuestosMenu.map((section, sectionIndex) => (
+                            <div key={sectionIndex}>
+                              <h3 className="text-sm font-semibold text-primary-600 mb-2 border-b border-gray-100 pb-1">
+                                {section.category}
+                              </h3>
+                              <ul className="space-y-1">
+                                {section.items.map((item, itemIndex) => (
+                                  <li key={itemIndex}>
+                                    <Link
+                                      to={item.path}
+                                      className="block px-3 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600 rounded-md transition-colors duration-200"
+                                      onClick={closeAllMenus}
+                                    >
+                                      {item.name}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     )}
                   </div>
@@ -321,9 +385,7 @@ const Navbar = () => {
                                   to={item.path}
                                   onClick={() => {
                                     setIsOpen(false)
-                                    setIsProductosOpen(false)
-                                    setIsRepuestosOpen(false)
-                                    setHoveredCategory(null)
+                                    closeAllMenus()
                                   }}
                                   className="block px-8 py-2 text-sm text-gray-600 hover:text-primary-600 transition-colors duration-200"
                                 >
@@ -344,9 +406,7 @@ const Navbar = () => {
                                   to={item.path}
                                   onClick={() => {
                                     setIsOpen(false)
-                                    setIsProductosOpen(false)
-                                    setIsRepuestosOpen(false)
-                                    setHoveredCategory(null)
+                                    closeAllMenus()
                                   }}
                                   className="block px-8 py-2 text-sm text-gray-600 hover:text-primary-600 transition-colors duration-200"
                                 >
