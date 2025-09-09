@@ -95,91 +95,91 @@ const Navbar = () => {
     {
       category: 'Membranas',
       items: [
-        { name: 'Membranas (próximamente)', path: '/productos?category=repuestosPartes' }
+        { name: 'Membranas', path: '/productos?category=repuestosPartes' }
       ]
     },
     {
       category: 'Lámparas UV',
       items: [
-        { name: 'Lámparas UV (próximamente)', path: '/productos?category=repuestosPartes' }
+        { name: 'Lámparas UV', path: '/productos?category=repuestosPartes' }
       ]
     },
     {
       category: 'Focos UV',
       items: [
-        { name: 'Focos UV (próximamente)', path: '/productos?category=repuestosPartes' }
+        { name: 'Focos UV', path: '/productos?category=repuestosPartes' }
       ]
     },
     {
       category: 'Carcasas',
       items: [
-        { name: 'Carcasas (próximamente)', path: '/productos?category=repuestosPartes' }
+        { name: 'Carcasas', path: '/productos?category=repuestosPartes' }
       ]
     },
     {
       category: 'Kits de instalación',
       items: [
-        { name: 'Kits de instalación (próximamente)', path: '/productos?category=repuestosPartes' }
+        { name: 'Kits de instalación', path: '/productos?category=repuestosPartes' }
       ]
     },
     {
       category: 'Te',
       items: [
-        { name: 'Te (próximamente)', path: '/productos?category=repuestosPartes' }
+        { name: 'Te', path: '/productos?category=repuestosPartes' }
       ]
     },
     {
       category: 'Racores',
       items: [
-        { name: 'Racores (próximamente)', path: '/productos?category=repuestosPartes' }
+        { name: 'Racores', path: '/productos?category=repuestosPartes' }
       ]
     },
     {
       category: 'Neplos',
       items: [
-        { name: 'Neplos (próximamente)', path: '/productos?category=repuestosPartes' }
+        { name: 'Neplos', path: '/productos?category=repuestosPartes' }
       ]
     },
     {
       category: 'Y',
       items: [
-        { name: 'Y (próximamente)', path: '/productos?category=repuestosPartes' }
+        { name: 'Y', path: '/productos?category=repuestosPartes' }
       ]
     },
     {
       category: 'Uniones',
       items: [
-        { name: 'Uniones (próximamente)', path: '/productos?category=repuestosPartes' }
+        { name: 'Uniones', path: '/productos?category=repuestosPartes' }
       ]
     },
     {
       category: 'Mangueras',
       items: [
-        { name: 'Mangueras (próximamente)', path: '/productos?category=repuestosPartes' }
+        { name: 'Mangueras', path: '/productos?category=repuestosPartes' }
       ]
     },
     {
       category: 'Abrazaderas',
       items: [
-        { name: 'Abrazaderas (próximamente)', path: '/productos?category=repuestosPartes' }
+        { name: 'Abrazaderas', path: '/productos?category=repuestosPartes' }
       ]
     },
     {
       category: 'Dispensadores',
       items: [
-        { name: 'Dispensadores (próximamente)', path: '/productos?category=repuestosPartes' }
+        { name: 'Dispensadores', path: '/productos?category=repuestosPartes' }
       ]
     },
     {
       category: 'Válvulas',
       items: [
-        { name: 'Válvulas (próximamente)', path: '/productos?category=repuestosPartes' }
+        { name: 'Válvulas', path: '/productos?category=repuestosPartes' }
       ]
     },
     {
       category: 'Eléctricos',
       items: [
-        { name: 'Eléctricos (próximamente)', path: '/productos?category=repuestosPartes' }
+        { name: 'Eléctricos', path: '/productos?category=repuestosPartes' }
       ]
     }
   ]
