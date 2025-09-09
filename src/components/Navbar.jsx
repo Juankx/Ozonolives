@@ -15,6 +15,7 @@ const Navbar = () => {
 
   const navLinks = [
     { name: 'Inicio', path: '/' },
+    { name: 'Empresa', path: '/empresa' },
     { name: 'Productos', path: '/productos', hasDropdown: true },
     { name: 'Repuestos', path: '/repuestos', hasDropdown: true },
     { name: 'Contacto', path: '/contacto' }

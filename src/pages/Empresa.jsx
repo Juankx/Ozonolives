@@ -1,207 +1,153 @@
 import React from 'react'
-import FeatureCard from '../components/FeatureCard'
 
 const Empresa = () => {
-  const values = [
-    {
-      icon: "🌱",
-      title: "Sostenibilidad",
-      description: "Comprometidos con el medio ambiente y la conservación de recursos naturales.",
-      color: "secondary"
-    },
-    {
-      icon: "🔬",
-      title: "Innovación",
-      description: "Desarrollo constante de tecnologías avanzadas para la purificación del agua.",
-      color: "primary"
-    },
-    {
-      icon: "🤝",
-      title: "Confianza",
-      description: "Construyendo relaciones duraderas con nuestros clientes basadas en la calidad y servicio.",
-      color: "accent"
-    },
-    {
-      icon: "⭐",
-      title: "Excelencia",
-      description: "Mantenemos los más altos estándares de calidad en todos nuestros productos y servicios.",
-      color: "secondary"
-    }
-  ]
-
-  // Secciones de historia y equipo omitidas según observaciones
-
   return (
-    <div className="pt-20">
+    <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary-600 to-secondary-600 text-white py-20">
-        <div className="container-custom text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
-            Nuestra Empresa
-          </h1>
-          <p className="text-xl md:text-2xl text-primary-100 max-w-3xl mx-auto animate-slide-up">
-            Más de una década de experiencia en purificación de agua y soluciones ecológicas
-          </p>
+      <section className="bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20">
+        <div className="container-custom">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              Nuestra Empresa
+            </h1>
+            <p className="text-xl md:text-2xl text-primary-100 leading-relaxed">
+              Líderes en soluciones de purificación y filtración de agua en Ecuador
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Mission & Vision */}
-      <section className="section-padding">
+      {/* Misión Section */}
+      <section className="py-16 bg-white">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 rounded-full mb-6">
+                <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                 Nuestra Misión
               </h2>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                Proporcionar soluciones innovadoras y sostenibles para la purificación del agua, 
-                contribuyendo a la salud pública y la preservación del medio ambiente a través 
-                de tecnologías avanzadas y un servicio excepcional.
+            </div>
+            
+            <div className="bg-gray-50 rounded-2xl p-8 md:p-12 shadow-lg">
+              <p className="text-lg md:text-xl text-gray-700 leading-relaxed text-center">
+                En OzonoLive nos dedicamos a proporcionar soluciones de filtración, purificación a base de ozono y ósmosis inversa, que promueven espacios más seguros, higiénicos y sostenibles. Nuestro propósito es garantizar equipos de alta calidad y eficiencia, respaldados por tecnología innovadora y un firme compromiso con la salud, el bienestar y el cuidado del medio ambiente.
               </p>
             </div>
-            <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+          </div>
+        </div>
+      </section>
+
+      {/* Visión Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container-custom">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 rounded-full mb-6">
+                <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                 Nuestra Visión
               </h2>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                Ser líderes reconocidos en América Latina en el desarrollo e implementación 
-                de tecnologías de purificación de agua, estableciendo nuevos estándares de 
-                calidad y sostenibilidad en la industria.
+            </div>
+            
+            <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg">
+              <p className="text-lg md:text-xl text-gray-700 leading-relaxed text-center">
+                Consolidarnos como la empresa líder en el mercado ecuatoriano de soluciones de filtración, purificación con ozono y ósmosis inversa, reconocida por la excelencia de nuestros productos, la confianza de nuestros clientes y nuestra contribución al desarrollo sostenible. Aspiramos a expandir nuestra presencia a nivel nacional, posicionándonos como un referente en innovación, calidad y responsabilidad ambiental.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Values */}
-      <section className="section-padding bg-gray-50">
+      {/* Valores Section */}
+      <section className="py-16 bg-white">
         <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Nuestros Valores
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Los principios que guían cada decisión y acción en Ozonolive
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <FeatureCard
-                key={index}
-                icon={value.icon}
-                title={value.title}
-                description={value.description}
-                color={value.color}
-                delay={index * 100}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* History */}
-      <section className="section-padding">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Nuestra Historia
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Un viaje de innovación y crecimiento en la industria de la purificación del agua
-            </p>
-          </div>
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-1/2 transform -translate-x-px h-full w-0.5 bg-primary-200"></div>
-            
-            <div className="space-y-12">
-              {milestones.map((milestone, index) => (
-                <div key={index} className={`relative flex items-center ${
-                  index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
-                }`}>
-                  {/* Timeline dot */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary-600 rounded-full border-4 border-white shadow-lg"></div>
-                  
-                  {/* Content */}
-                  <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
-                    <div className="bg-white p-6 rounded-lg shadow-lg border border-gray-100">
-                      <div className="text-2xl font-bold text-primary-600 mb-2">
-                        {milestone.year}
-                      </div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                        {milestone.title}
-                      </h3>
-                      <p className="text-gray-600">
-                        {milestone.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Nuestros Valores
+              </h2>
+              <p className="text-lg text-gray-600">
+                Los principios que guían nuestro trabajo diario
+              </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section className="section-padding bg-gray-50">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Nuestro Equipo
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Profesionales comprometidos con la excelencia y la innovación
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {team.map((member, index) => (
-              <div key={index} className="card text-center group hover:scale-105 transition-transform duration-300">
-                <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-primary-100">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 rounded-full mb-4">
+                  <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  {member.name}
-                </h3>
-                <p className="text-primary-600 font-medium mb-3">
-                  {member.position}
-                </p>
-                <p className="text-gray-600 text-sm">
-                  {member.description}
-                </p>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Calidad</h3>
+                <p className="text-gray-600">Equipos de alta calidad y eficiencia comprobada</p>
               </div>
-            ))}
+              
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 rounded-full mb-4">
+                  <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Innovación</h3>
+                <p className="text-gray-600">Tecnología innovadora y soluciones avanzadas</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 rounded-full mb-4">
+                  <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Compromiso</h3>
+                <p className="text-gray-600">Firme compromiso con la salud y el bienestar</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 rounded-full mb-4">
+                  <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Sostenibilidad</h3>
+                <p className="text-gray-600">Cuidado del medio ambiente y desarrollo sostenible</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-r from-primary-600 to-secondary-600">
-        <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            ¿Listo para trabajar con nosotros?
-          </h2>
-          <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-            Descubre cómo podemos ayudarte a implementar soluciones de purificación de agua 
-            que transformen tu negocio y protejan el medio ambiente.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/contacto"
-              className="btn-secondary text-lg px-8 py-4"
-            >
-              Contáctanos
-            </a>
-            <a
-              href="/productos"
-              className="btn-outline text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-primary-600"
-            >
-              Ver Productos
-            </a>
+      <section className="py-16 bg-gradient-to-r from-primary-600 to-primary-800 text-white">
+        <div className="container-custom">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              ¿Listo para conocer nuestras soluciones?
+            </h2>
+            <p className="text-xl text-primary-100 mb-8">
+              Descubre cómo podemos ayudarte a mejorar la calidad del agua en tu hogar o negocio
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="/productos"
+                className="bg-white text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300"
+              >
+                Ver Productos
+              </a>
+              <a
+                href="/contacto"
+                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary-600 transition-colors duration-300"
+              >
+                Contactar
+              </a>
+            </div>
           </div>
         </div>
       </section>
