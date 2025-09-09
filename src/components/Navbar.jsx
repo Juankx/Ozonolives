@@ -295,7 +295,7 @@ const Navbar = () => {
                     {/* Dropdown Menu Repuestos */}
                     {link.name === 'Repuestos' && isRepuestosOpen && (
                       <div 
-                        className="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-xl border border-gray-200 py-4 z-50"
+                        className="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-xl border border-gray-200 py-4 z-50 max-h-96 overflow-y-auto"
                         onMouseEnter={() => setIsRepuestosOpen(true)}
                         onMouseLeave={() => {
                           setTimeout(() => setIsRepuestosOpen(false), 1)
@@ -303,8 +303,8 @@ const Navbar = () => {
                       >
                         <div className="px-4">
                           {repuestosMenu.map((section, sectionIndex) => (
-                            <div key={sectionIndex}>
-                              <h3 className="text-sm font-semibold text-primary-600 mb-2 border-b border-gray-100 pb-1">
+                            <div key={sectionIndex} className="mb-4">
+                              <h3 className="text-sm font-semibold text-primary-600 mb-2 border-b border-gray-100 pb-1 sticky top-0 bg-white">
                                 {section.category}
                               </h3>
                               <ul className="space-y-1">
@@ -422,7 +422,7 @@ const Navbar = () => {
                     
                     {/* Mobile Dropdown */}
                     {((link.name === 'Productos' && isProductosOpen) || (link.name === 'Repuestos' && isRepuestosOpen)) && (
-                      <div className="ml-4 mt-2 space-y-2">
+                      <div className={`ml-4 mt-2 space-y-2 ${link.name === 'Repuestos' ? 'max-h-80 overflow-y-auto' : ''}`}>
                         {link.name === 'Productos' ? (
                           productosMenu.map((section, sectionIndex) => (
                             <div key={sectionIndex} className="space-y-2">
