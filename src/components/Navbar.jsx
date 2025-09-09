@@ -23,43 +23,55 @@ const Navbar = () => {
   // Menú de productos con enlaces a páginas específicas
   const productosMenu = [
     {
-      category: 'Equipos de Purificación a base de ozono',
-      items: [
-        { name: 'OZONO PET', path: '/producto/oz-001' },
-        { name: 'Diamant Inox', path: '/producto/oz-002' },
-        { name: 'GTOR', path: '/producto/oz-003' },
-        { name: 'Cabezote Inox', path: '/producto/oz-004' },
-        { name: 'Ozono Dispent', path: '/productos?category=equiposOzono' },
-        { name: 'Línea Fiesta – Nova', path: '/productos?category=equiposOzono' },
-        { name: 'Línea Fiesta – Manzana Verde', path: '/productos?category=equiposOzono' },
-        { name: 'Línea Fiesta – Manzana Roja', path: '/productos?category=equiposOzono' },
-        { name: 'Línea Fiesta – Vaca', path: '/productos?category=equiposOzono' },
-        { name: 'Nova Touch', path: '/productos?category=equiposOzono' }
+      category: 'EQUIPOS A BASE DE OZONO',
+      subcategories: [
+        {
+          name: 'Equipos a base de Ozono',
+          items: [
+            { name: 'Diamant Inox', path: '/producto/oz-002' },
+            { name: 'Cabezote Inox', path: '/producto/oz-004' },
+            { name: 'Ozono Dispent', path: '/productos?category=equiposOzono' },
+            { name: 'Nova Touch', path: '/productos?category=equiposOzono' }
+          ]
+        },
+        {
+          name: 'Línea Fiesta',
+          items: [
+            { name: 'Nova', path: '/productos?category=equiposOzono' },
+            { name: 'Manzana Verde', path: '/productos?category=equiposOzono' },
+            { name: 'Manzana Roja', path: '/productos?category=equiposOzono' },
+            { name: 'Vaca', path: '/productos?category=equiposOzono' }
+          ]
+        }
       ]
     },
     {
-      category: 'Sistemas de filtración',
-      items: [
-        { name: 'Filtros de Polident (Sedimentos)', path: '/producto/sf-001' },
-        { name: 'Filtros de Carbón Activado en Bloque', path: '/producto/sf-002' },
-        { name: 'Filtros Granulados', path: '/producto/sf-003' },
-        { name: 'Filtros Plisados', path: '/producto/sf-004' },
-        { name: 'Filtros Mixtos', path: '/producto/sf-005' },
-        { name: 'Filtros Mineralizadores', path: '/producto/sf-006' },
-        { name: 'Sistema de filtración 2 etapas', path: '/productos?category=sistemasFiltracion' },
-        { name: 'Sistema de filtración 3 etapas', path: '/productos?category=sistemasFiltracion' },
-        { name: 'Sistema de filtración 4 etapas', path: '/productos?category=sistemasFiltracion' }
+      category: 'SISTEMAS DE FILTRACION',
+      subcategories: [
+        {
+          name: 'Sistemas de Filtración',
+          items: [
+            { name: 'Sistema de Filtración 2 etapas', path: '/productos?category=sistemasFiltracion' },
+            { name: 'Sistema de Filtración 3 etapas', path: '/productos?category=sistemasFiltracion' },
+            { name: 'Sistema de Filtración 4 etapas', path: '/productos?category=sistemasFiltracion' }
+          ]
+        }
       ]
     },
     {
-      category: 'Sistemas de Ósmosis Inversa',
-      items: [
-        { name: 'Ósmosis Inversa de 5 etapas', path: '/producto/so-001' },
-        { name: 'Ósmosis Inversa de 6 etapas', path: '/productos?category=sistemasOsmosis' },
-        { name: 'Ósmosis Inversa de 7 etapas', path: '/producto/so-002' },
-        { name: 'Ósmosis Inversa de 5 etapas + Lámpara UV', path: '/productos?category=sistemasOsmosis' },
-        { name: 'Ósmosis Inversa de 6 etapas + Lámpara UV', path: '/productos?category=sistemasOsmosis' },
-        { name: 'Ósmosis Inversa de 7 etapas + Lámpara UV', path: '/producto/so-002' }
+      category: 'EQUIPOS A BASE DE ÓSMOSIS INVERSA',
+      subcategories: [
+        {
+          name: 'Sistemas de Ósmosis Inversa',
+          items: [
+            { name: 'Sistema de Ósmosis Inversa de 5 etapas', path: '/producto/so-001' },
+            { name: 'Sistema de Ósmosis Inversa de 6 etapas', path: '/productos?category=sistemasOsmosis' },
+            { name: 'Sistema de Ósmosis Inversa de 7 etapas', path: '/producto/so-002' },
+            { name: 'Sistema de Ósmosis Inversa de 5 etapas + Lámpara UV', path: '/productos?category=sistemasOsmosis' },
+            { name: 'Sistema de Ósmosis Inversa de 6 etapas + Lámpara UV', path: '/productos?category=sistemasOsmosis' },
+            { name: 'Sistema de Ósmosis Inversa de 7 etapas + Lámpara UV', path: '/producto/so-002' }
+          ]
+        }
       ]
     }
   ]
@@ -67,13 +79,106 @@ const Navbar = () => {
   // Menú de repuestos con enlaces a páginas específicas
   const repuestosMenu = [
     {
-      category: 'Repuestos y partes',
+      category: 'Filtros',
       items: [
-        { name: 'Membrana de Ósmosis Inversa', path: '/producto/rp-001' },
-        { name: 'Filtro Post Carbón', path: '/producto/rp-002' },
-        { name: 'Carcasas Big Blue', path: '/producto/rp-003' },
-        { name: 'Para equipos a base de ozono', path: '/productos?category=equiposOzono' },
-        { name: 'Para equipos de ósmosis inversa', path: '/productos?category=sistemasOsmosis' }
+        { name: 'Filtros de polident (sedimentos)', path: '/productos?category=repuestosPartes' },
+        { name: 'Filtros de carbón activado en bloque', path: '/productos?category=repuestosPartes' },
+        { name: 'Filtros granulados', path: '/productos?category=repuestosPartes' },
+        { name: 'Filtros plisados', path: '/productos?category=repuestosPartes' },
+        { name: 'Filtros mixtos', path: '/productos?category=repuestosPartes' },
+        { name: 'Filtros mineralizadores', path: '/productos?category=repuestosPartes' },
+        { name: 'Filtros alcalinizadores', path: '/productos?category=repuestosPartes' },
+        { name: 'Filtro post carbón', path: '/productos?category=repuestosPartes' }
+      ]
+    },
+    {
+      category: 'Membranas',
+      items: [
+        { name: 'Membranas (próximamente)', path: '/productos?category=repuestosPartes' }
+      ]
+    },
+    {
+      category: 'Lámparas UV',
+      items: [
+        { name: 'Lámparas UV (próximamente)', path: '/productos?category=repuestosPartes' }
+      ]
+    },
+    {
+      category: 'Focos UV',
+      items: [
+        { name: 'Focos UV (próximamente)', path: '/productos?category=repuestosPartes' }
+      ]
+    },
+    {
+      category: 'Carcasas',
+      items: [
+        { name: 'Carcasas (próximamente)', path: '/productos?category=repuestosPartes' }
+      ]
+    },
+    {
+      category: 'Kits de instalación',
+      items: [
+        { name: 'Kits de instalación (próximamente)', path: '/productos?category=repuestosPartes' }
+      ]
+    },
+    {
+      category: 'Te',
+      items: [
+        { name: 'Te (próximamente)', path: '/productos?category=repuestosPartes' }
+      ]
+    },
+    {
+      category: 'Racores',
+      items: [
+        { name: 'Racores (próximamente)', path: '/productos?category=repuestosPartes' }
+      ]
+    },
+    {
+      category: 'Neplos',
+      items: [
+        { name: 'Neplos (próximamente)', path: '/productos?category=repuestosPartes' }
+      ]
+    },
+    {
+      category: 'Y',
+      items: [
+        { name: 'Y (próximamente)', path: '/productos?category=repuestosPartes' }
+      ]
+    },
+    {
+      category: 'Uniones',
+      items: [
+        { name: 'Uniones (próximamente)', path: '/productos?category=repuestosPartes' }
+      ]
+    },
+    {
+      category: 'Mangueras',
+      items: [
+        { name: 'Mangueras (próximamente)', path: '/productos?category=repuestosPartes' }
+      ]
+    },
+    {
+      category: 'Abrazaderas',
+      items: [
+        { name: 'Abrazaderas (próximamente)', path: '/productos?category=repuestosPartes' }
+      ]
+    },
+    {
+      category: 'Dispensadores',
+      items: [
+        { name: 'Dispensadores (próximamente)', path: '/productos?category=repuestosPartes' }
+      ]
+    },
+    {
+      category: 'Válvulas',
+      items: [
+        { name: 'Válvulas (próximamente)', path: '/productos?category=repuestosPartes' }
+      ]
+    },
+    {
+      category: 'Eléctricos',
+      items: [
+        { name: 'Eléctricos (próximamente)', path: '/productos?category=repuestosPartes' }
       ]
     }
   ]
@@ -156,21 +261,28 @@ const Navbar = () => {
                             ))}
                           </div>
                           
-                          {/* Columna derecha con productos */}
+                          {/* Columna derecha con subcategorías y productos */}
                           <div className="w-1/2">
                             {hoveredCategory && (
                               <div className="px-4">
                                 {productosMenu
                                   .find(section => section.category === hoveredCategory)
-                                  ?.items.map((item, itemIndex) => (
-                                    <div key={itemIndex} className="py-1">
-                                      <Link
-                                        to={item.path}
-                                        className="block px-3 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600 rounded-md transition-colors duration-200"
-                                        onClick={closeAllMenus}
-                                      >
-                                        {item.name}
-                                      </Link>
+                                  ?.subcategories.map((subcategory, subIndex) => (
+                                    <div key={subIndex} className="mb-4">
+                                      <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">
+                                        {subcategory.name}
+                                      </h4>
+                                      {subcategory.items.map((item, itemIndex) => (
+                                        <div key={itemIndex} className="py-1">
+                                          <Link
+                                            to={item.path}
+                                            className="block px-3 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600 rounded-md transition-colors duration-200"
+                                            onClick={closeAllMenus}
+                                          >
+                                            {item.name}
+                                          </Link>
+                                        </div>
+                                      ))}
                                     </div>
                                   ))}
                               </div>
@@ -317,18 +429,25 @@ const Navbar = () => {
                               <h4 className="text-sm font-semibold text-primary-600 px-4">
                                 {section.category}
                               </h4>
-                              {section.items.map((item, itemIndex) => (
-                                <Link
-                                  key={itemIndex}
-                                  to={item.path}
-                                  onClick={() => {
-                                    setIsOpen(false)
-                                    closeAllMenus()
-                                  }}
-                                  className="block px-8 py-2 text-sm text-gray-600 hover:text-primary-600 transition-colors duration-200"
-                                >
-                                  {item.name}
-                                </Link>
+                              {section.subcategories.map((subcategory, subIndex) => (
+                                <div key={subIndex} className="ml-4 space-y-1">
+                                  <h5 className="text-xs font-semibold text-gray-500 uppercase tracking-wide px-4">
+                                    {subcategory.name}
+                                  </h5>
+                                  {subcategory.items.map((item, itemIndex) => (
+                                    <Link
+                                      key={itemIndex}
+                                      to={item.path}
+                                      onClick={() => {
+                                        setIsOpen(false)
+                                        closeAllMenus()
+                                      }}
+                                      className="block px-8 py-2 text-sm text-gray-600 hover:text-primary-600 transition-colors duration-200"
+                                    >
+                                      {item.name}
+                                    </Link>
+                                  ))}
+                                </div>
                               ))}
                             </div>
                           ))
